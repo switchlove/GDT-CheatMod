@@ -1,0 +1,10 @@
+{
+    "id": "CheatMod-SwitchLove",
+    "name": "CheatMod v1.1.1",
+    "version": "1.1.1",
+    "author": "SwitchLove",
+    "url": "https://github.com/switchlove/GDT-CheatMod",
+    "description": "Version 1.1.1 now out! The original CheatMod was by Kristof1104. Updated for usability.  This enables users to use cheats through an in-game menu. Using this mod is a safer method then modifying the save game directly.",
+    "main": "./CheatMod.js",
+    "image": "cmlogo-Thumbnail.png"
+}

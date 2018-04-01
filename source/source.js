@@ -494,7 +494,8 @@
 		if(b == "competitorMod"){
 		}else{
 			c.push({
-					label: "CheatMode...",
+					label: "CheatMod...",
+					icon: "./images/context menu icons/icon_customengine.svg",
 					action: function () {
 						Sound.click();
 						GameManager.resume(true);

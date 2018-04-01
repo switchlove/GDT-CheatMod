@@ -42,12 +42,12 @@
 			var character = new Character({
                     id: GameManager.getGUID(),
                     name: "Dev"+i,
-                    dF: 2,
-                    tF: 2,
-                    speedF: 2,
+                    dF: 3,
+                    tF: 3,
+                    speedF: 3,
                     qualityF: 1,
-                    experience: LevelCalculator.getXpForLevel(10),
-                    researchF: 2,
+                    experience: LevelCalculator.getXpForLevel(15),
+                    researchF: 3,
                     salary: 1,
                     efficiency: 1,
                     slot: i,
@@ -125,6 +125,60 @@
 		UI.reset();
 		
 	}
+
+	function add2Famous(){
+		if(GameManager.company.currentLevel == 4)
+			GameManager.company.maxStaff = 7;
+	
+		for (var i=1;i<GameManager.company.maxStaff;i++){
+		var skipCharacter = false;
+			for(var j=0;j<GameManager.company.staff.length;j++){
+				if(GameManager.company.staff[j].slot == i){
+					skipCharacter = true;
+					break;
+				}
+			}
+			
+			if(skipCharacter){
+				continue;
+			}
+			
+			var character = new Character({
+				id: GameManager.getGUID(),
+				name: ["Bill J. Allen", "Dennis Avelone", "Arthur Bee", "Mick Brash", "Bill Bright", "Richard Chariott", "Jona Chen", "Martin Person", "Sip Meyer", "Leeroy Jenkins", "James E. Garmack", "Kevin Flin"].pickRandom(),
+				dF: 2,
+				tF: 2,
+				speedF: 2,
+				qualityF: 1,
+				experience: LevelCalculator.getXpForLevel(10),
+				researchF: 2,
+				salary: 1,
+				efficiency: 1,
+				slot: 1,
+				sex: "male"
+			});
+				
+			GameManager.setBodyAndHead(character);
+			character.flags.hiredTimestamp = GameManager.gameTime;
+			character.flags.nextVacation = GameManager.gameTime + 48E3 * GameManager.SECONDS_PER_WEEK;
+			character.flags.workload = 0;
+			character.maxBoostLevel = 3;
+			character.boostLevel = 0;
+			character.boostRechargeProgress = 1;
+			UI._resetBoostUI();
+			GameManager.company.staff.push(character);
+			GameManager.uiSettings.findStaffData = null;
+			VisualsManager.reloadAllCharacters();
+			GameManager.company.staff[GameManager.company.staff.length - 1].startAnimations();
+			VisualsManager.addComputer(character);
+			VisualsManager.refreshHiringButtons();
+			VisualsManager.refreshTrainingOverlays();
+		}
+		
+		2 < GameManager.company.staff.length && GameManager.enableMediumContracts();
+		UI.reset();
+		Achievements.activate(Achievements.hireSomeoneFamous)
+	}	
 	
 	function createProDeveloper(){
 		var character = GameManager.company.staff[0];
@@ -272,7 +326,7 @@
 	}
 
 	var div = $("body");
-	div.append('<div id="CheatContainer" class="windowBorder tallWindow" style="z-index: 5400;overflow:auto;display:none;"> <div id="cheatmodtop" class="windowTitle smallerWindowTitle">CheatMod by SwitchLove</div>');
+	div.append('<div id="CheatContainer" class="windowBorder tallWindow" style="z-index: 5500;overflow:auto;display:none;"> <div id="cheatmodtop" class="windowTitle smallerWindowTitle">CheatMod by SwitchLove</div>');
 	div = $("#CheatContainer");
 	div.append('<div id="moneylbl" style="margin-left:50px;width: 450px;" >Add Money</div>');
 	div.append('<div id="money1M" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:50px;width: 104px;" >Add 1M</div>');
@@ -293,6 +347,7 @@
 	div.append('<div id="research" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px;">Add Research Points (100 pts)</div>');
 	div.append('<div id="dreamteam" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Fill open team positions with the dream team</div>');
 	div.append('<div id="bteam" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Fill open team positions with the b-team</div>');
+	div.append('<div id="2famous" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Hire a famous developer</div>');
 	div.append('<div id="proDeveloper" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Turn your player into a godly developer</div>');
 	div.append('<div id="generateNewTrend" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Generate a random trend</div>');
 	div.append('<div id="moveToLvl4" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Move to final level</div>');
@@ -353,6 +408,9 @@
 				break;			
 			case "bteam":
                 addBTeam();
+				break;
+			case "2famous":
+				add2Famous();
 				break;
 			case "proDeveloper":
                 createProDeveloper();
@@ -444,7 +502,7 @@
 						generateTechLevelScreen();	
 						var div = $("#CheatContainer");
 						div.scrollTop()
-						$("#CheatContainer").css("z-index","5400");
+						$("#CheatContainer").css("z-index","5500");
 						div.gdDialog({
 								popout: !0,
 								close: !0,

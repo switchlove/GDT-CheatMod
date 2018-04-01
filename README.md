@@ -24,4 +24,5 @@ Now when you press the left mouse button a new option called "CheatMode..." is a
 	- Code clean up
 	
 	Version 1.1.2
-  	- TBA
+  	- Added option to hire a famous developer
+	- Increased level of hired developers from the Dream Team

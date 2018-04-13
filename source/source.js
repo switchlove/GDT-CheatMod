@@ -4,6 +4,7 @@ var CheatModSwitchLove = {};
     var perfectScores = false;
     var noBugsMode = false;
     var fastResearch = false;
+    var fastEngineDev = false;
     var showAllHints = false;
 
     var oldSetupNewGame = GameManager._setupNewGame;
@@ -367,6 +368,7 @@ var CheatModSwitchLove = {};
     div.append('<div id="setPerfectScoreEnabled" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Activate always have perfect scores</div>');
     div.append('<div id="setNoBugsModeEnabled" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Activate no bugs mode</div>');
     div.append('<div id="setFastResearchModeEnabled" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Activate fast research mode</div>');
+    div.append('<div id="setFastEngineDevModeEnabled" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Activate fast engine devlopment mode</div>');
     div.append('<div id="showAllHintsEnabled" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Activate show all hints mode</div>');
 
     div.append('<div id="cheatmodLbl" class="windowTitle smallerWindowTitle">TechLevels</div>');
@@ -460,6 +462,9 @@ var CheatModSwitchLove = {};
                 break;
             case "setFastResearchModeEnabled":
                 setFastResearchEnabled();
+                break;
+            case "setFastEngineDevModeEnabled":
+                setFastEngineDevEnabled();
                 break;
             case "showAllHintsEnabled":
                 setShowAllHintsEnabled();
@@ -651,6 +656,31 @@ var CheatModSwitchLove = {};
             var div = $("#CheatContainer");
             div.find("#setFastResearchModeEnabled").html("Deactivate fast research mode");
             fastResearch = true;
+        }
+    }
+
+    //instant engine
+    var old_increaseEnginePoints = GameManager.increaseEnginePoints;
+    var new_increaseEnginePoints = function () {
+        if (fastEngineDev) {
+            GameManager.currentEngineDev.remainingPoints = 0;
+            GameManager.currentEngineDev.remainingPointsDisplay = 0;
+            GameManager.finishEngine();
+        } else {
+            old_increaseEnginePoints();
+        }
+    }
+    GameManager.increaseEnginePoints = new_increaseEnginePoints
+
+    var setFastEngineDevEnabled = function () {
+        if (fastEngineDev) {
+            var div = $("#CheatContainer");
+            div.find("#setFastEngineDevModeEnabled").html("Activate fast engine devlopment mode");
+            fastEngineDev = false;
+        } else {
+            var div = $("#CheatContainer");
+            div.find("#setFastEngineDevModeEnabled").html("Deactivate fast engine devlopment mode");
+            fastEngineDev = true;
         }
     }
 

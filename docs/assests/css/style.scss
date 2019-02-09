@@ -2,7 +2,7 @@
 ---
 
 @import "{{ site.theme }}";
-.col:not(:nth-child(1)){
+.column:not(:nth-child(1)){
   float:left;
   margin-left: 20px;
 }

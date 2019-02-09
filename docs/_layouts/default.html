@@ -41,10 +41,23 @@
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        {% if site.github.is_project_page %}
-        <p class="copyright">{{ site.title | default: site.github.repository_name }} maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
-        {% endif %}
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+		<div class="row">
+			<div class="column">
+				{% if site.github.is_project_page %}
+				<p class="copyright">{{ site.title | default: site.github.repository_name }} maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
+				{% endif %}
+				<p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+			</div>
+			<div class="column">
+				<div>
+					<a class="donate-with-crypto"
+					 href="https://commerce.coinbase.com/checkout/e520b9e9-aae6-494f-83d6-03dcd8ff792d">
+						<span>Donate with Crypto</span>
+					</a>
+					<script src="https://commerce.coinbase.com/v1/checkout.js?version=201807"></script>
+				</div>			
+			</div>
+		</div>
       </footer>
     </div>
 

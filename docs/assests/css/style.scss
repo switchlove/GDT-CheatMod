@@ -2,10 +2,7 @@
 ---
 
 @import "{{ site.theme }}";
-.row {
-  display: flex;
-}
-
-.column {
-  flex: 50%;
+.col:not(:nth-child(1)){
+  float:left;
+  margin-left: 20px;
 }

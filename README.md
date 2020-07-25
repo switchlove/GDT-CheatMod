@@ -12,7 +12,7 @@ This is a mod for Game Dev Tycoon, it enables users to use cheats through an in-
 	Click left mouse button and a new option called "CheatMode..." is added.	
 
 ## Changelog
-	Version 1.1.4
+	Version 1.1.4 
 	- Added option to set player level to 9. For achievement for reaching level 10.
 
 	Version 1.1.3

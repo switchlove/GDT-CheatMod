@@ -23,7 +23,7 @@ This is a mod for Game Dev Tycoon, it enables users to use cheats through an in-
 	- Increased level of hired developers from the Dream Team
 	
 	Version 1.1.1
-  	- UI updates, 
+  	- UI updates
 	- Grammar corrections
 	- Code clean up
 	

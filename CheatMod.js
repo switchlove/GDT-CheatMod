@@ -1,6 +1,6 @@
 ﻿(function () {
 	var ready = function () {
-		console.log("CheatMod is ready for action");
+		console.log("CheatMod is ready for action!");
 	};
 
 	var error = function () {

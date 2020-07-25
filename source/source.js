@@ -181,6 +181,17 @@
 		Achievements.activate(Achievements.hireSomeoneFamous)
 	}	
 	
+	function createSemiProDeveloper(){
+		var character = GameManager.company.staff[0];
+        character.designFactor= 2;
+        character.technologyFactor= 2;
+        character.speedFactor= 2;
+		character.qualityFactor= 1;
+        character.experience= 9400;
+        character.researchFactor= 2;
+        character.efficiency= 1;
+	}
+	
 	function createProDeveloper(){
 		var character = GameManager.company.staff[0];
         character.designFactor= 2;
@@ -349,6 +360,7 @@
 	div.append('<div id="dreamteam" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Fill open team positions with the dream team</div>');
 	div.append('<div id="bteam" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Fill open team positions with the b-team</div>');
 	div.append('<div id="2famous" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Hire a famous developer</div>');
+	div.append('<div id="semiproDeveloper" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Turn your player into a lvl 9 developer</div>');
 	div.append('<div id="proDeveloper" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Turn your player into a godly developer</div>');
 	div.append('<div id="generateNewTrend" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Generate a random trend</div>');
 	div.append('<div id="moveToLvl4" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Move to final level</div>');
@@ -414,6 +426,9 @@
 			case "2famous":
 				add2Famous();
 				break;
+			case "semiproDeveloper":
+                createSemiProDeveloper();
+				break;			
 			case "proDeveloper":
                 createProDeveloper();
 				break;

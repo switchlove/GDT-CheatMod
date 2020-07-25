@@ -1,10 +1,10 @@
 {
     "id": "CheatMod-SwitchLove",
-    "name": "CheatMod v1.1.3",
-    "version": "1.1.3",
+    "name": "CheatMod v1.1.4",
+    "version": "1.1.4",
     "author": "SwitchLove",
     "url": "https://github.com/switchlove/GDT-CheatMod",
-    "description": "Version 1.1.3 now out! \n\nThe original CheatMod was by Kristof1104. Updated for usability. \n\nThis enables users to use cheats through an in-game menu. Using this mod is a safer method then modifying the save game directly.\n\nHow to activate CheatMod in your Game Dev Tycoon:\n\n1. Startup the game and open the main menu.\n2. In the main menu open up the mods screen.\n3. Select CheatMod and reboot Game Dev Tycoon.\n4. Profit\n\nNow when you press the left mouse button in the main game a new option called \"CheatMode...\" is added. \n\n### FAQ ###\n1.) Menu option not showing up?\nTry disabling the mod, then restart the game, enable the mod, restart the game again and it should be showing! Sometimes this takes a restart or two to take hold.\n\n2.) Mod not updating?\nIn your game directory in the mods_ws folder remove the 67324367_CheatMod_Custom folder, then restart the game. That will force steam to re-download the mod. ",
+    "description": "Version 1.1.4 now out! \n\nAdd money, fans, hype! Speed up your research and development! Manage your player and team! \n\nThis enables users to use cheats through an in-game menu.",
     "main": "./CheatMod.js",
     "image": "cmlogo-Thumbnail.png"
 }

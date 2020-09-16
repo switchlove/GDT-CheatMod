@@ -26,3 +26,9 @@ Now when you press the left mouse button a new option called "CheatMode..." is a
 	
 	Version 1.1.3
 	- Instant custom engine creation
+	
+	Version 1.1.4
+	- Added option to set player level to 9. For achievement for reaching level 10
+	
+	Version 1.1.5
+	- Fixed bug with the hire a famous developer developer, where the new staff was assigned the wrong slot ID

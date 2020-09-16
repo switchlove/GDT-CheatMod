@@ -132,7 +132,7 @@
 			GameManager.company.maxStaff = 7;
 	
 		for (var i=1;i<GameManager.company.maxStaff;i++){
-		var skipCharacter = false;
+			var skipCharacter = false;
 			for(var j=0;j<GameManager.company.staff.length;j++){
 				if(GameManager.company.staff[j].slot == i){
 					skipCharacter = true;
@@ -143,7 +143,7 @@
 			if(skipCharacter){
 				continue;
 			}
-			
+						
 			var character = new Character({
 				id: GameManager.getGUID(),
 				name: ["Bill J. Allen", "Dennis Avelone", "Arthur Bee", "Mick Brash", "Bill Bright", "Richard Chariott", "Jona Chen", "Martin Person", "Sip Meyer", "Leeroy Jenkins", "James E. Garmack", "Kevin Flin"].pickRandom(),
@@ -155,7 +155,7 @@
 				researchF: 2,
 				salary: 1,
 				efficiency: 1,
-				slot: 1,
+				slot: i,
 				sex: "male"
 			});
 				
@@ -198,7 +198,7 @@
         character.technologyFactor= 2;
         character.speedFactor= 2;
 		character.qualityFactor= 1;
-        character.experience= 10000;
+        character.experience= 20000;
         character.researchFactor= 2;
         character.efficiency= 1;
 	}

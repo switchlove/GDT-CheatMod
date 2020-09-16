@@ -1,0 +1,8 @@
+---
+---
+
+@import "{{ site.theme }}";
+.column:not(:nth-child(1)){
+  float:left;
+  margin-left: 20px;
+}

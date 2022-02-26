@@ -1,10 +1,10 @@
 {
     "id": "CheatMod-SwitchLove",
-    "name": "CheatMod v1.1.5",
-    "version": "1.1.5",
+    "name": "CheatMod v1.1.6",
+    "version": "1.1.6",
     "author": "SwitchLove",
     "url": "https://github.com/switchlove/GDT-CheatMod",
-    "description": "Version 1.1.5 now out! \n\nAdd money, fans, hype! Speed up your research and development! Manage your player and team! \n\nThis is a mod for Game Dev Tycoon, it enables users to use cheats through an in-game menu. Using this mod is considered a \"safer\" method then changing the save game directly with an editor. ",
+    "description": "Version 1.1.6 now out! \n\nAdd money, fans, hype! Speed up your research and development! Manage your player and team! \n\nThis is a mod for Game Dev Tycoon, it enables users to use cheats through an in-game menu. Using this mod is considered a \"safer\" method then changing the save game directly with an editor. ",
     "main": "./CheatMod.js",
     "image": "cmlogo-Thumbnail.png"
 }

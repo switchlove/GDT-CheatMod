@@ -308,8 +308,12 @@
 		GameManager.company.fans = parseInt(fans);
 	}
 	
-	function addResearchPoints(){
-		GameManager.company.researchPoints += 100;
+	function addResearchPoints(addBy1000){
+		if(typeof addBy1000 != 'undefined' && addBy1000 != null){
+			GameManager.company.researchPoints += 1000;
+		}else{
+			GameManager.company.researchPoints += 100;
+		}
 		VisualsManager.researchPoints.updatePoints(GameManager.company.researchPoints); 
 	}
 	
@@ -347,16 +351,21 @@
 	div.append('<div id="money1B" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:0px;width: 104px;" >Add 1B</div>');
 		
 	div.append('<div id="fanslbl" style="margin-left:50px;width: 450px;" >Add Fans</div>');
-	div.append('<div id="fans1M" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:50px;width: 142px;" >Add 1M</div>');
-	div.append('<div id="fans10M" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:0px;width: 142px;" >Add 10M</div>');
-	div.append('<div id="fans100M" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:0px;width: 142px;" >Add 100M</div>');
+	div.append('<div id="fans1M" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:50px;width: 104px;" >Add 1M</div>');
+	div.append('<div id="fans10M" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:0px;width: 104px;" >Add 10M</div>');
+	div.append('<div id="fans100M" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:0px;width: 104px;" >Add 100M</div>');
+	div.append('<div id="fans1B" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:0px;width: 104px;" >Add 1B</div>');
 	
 	div.append('<div id="hypelbl" style="margin-left:50px;width: 450px;" >Add Hype</div>');
-	div.append('<div id="hype10" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:50px;width: 142px;" >Add 10</div>');
-	div.append('<div id="hype50" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:0px;width: 142px;" >Add 50</div>');
-	div.append('<div id="hype100" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:0px;width: 142px;" >Add 100</div>');
+	div.append('<div id="hype10" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:50px;width: 104px;" >Add 10</div>');
+	div.append('<div id="hype100" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:0px;width: 104px;" >Add 100</div>');
+	div.append('<div id="hype1k" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:0px;width: 104px;" >Add 1k</div>');
+	div.append('<div id="hype10k" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:0px;width: 104px;" >Add 10k</div>');
 	
-	div.append('<div id="research" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px;">Add Research Points (100 pts)</div>');
+	div.append('<div id="researchlbl" style="margin-left:50px;width: 450px;" >Add Research</div>');
+	div.append('<div id="research" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:50px;width: 208px;" >Add 100</div>');
+	div.append('<div id="research1k" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="display:inline-block;position: relative;margin-left:0px;width: 208px;" >Add 1k</div>');
+	
 	div.append('<div id="dreamteam" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Fill open team positions with the dream team</div>');
 	div.append('<div id="bteam" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Fill open team positions with the b-team</div>');
 	div.append('<div id="2famous" class="selectorButton whiteButton" onclick="UI.pickCheatClick(this)" style="margin-left:50px;width: 450px">Hire a famous developer</div>');
@@ -408,6 +417,9 @@
             case "research":
                 addResearchPoints();
 				break;
+            case "research1k":
+                addResearchPoints(true);
+				break;
             case "fans1M":
                 addFans(1000000);
 				break;
@@ -416,6 +428,9 @@
 				break;
             case "fans100M":
                 addFans(100000000);
+				break;
+            case "fans1B":
+                addFans(1000000000);
 				break;
 			case "dreamteam":
                 addDreamTeam();
@@ -450,11 +465,14 @@
 			case "hype10":
                 addHype(10);
 				break;
-			case "hype50":
-                addHype(50);
-				break;
 			case "hype100":
                 addHype(100);
+				break;
+			case "hype1k":
+                addHype(1000);
+				break;
+			case "hype10k":
+                addHype(10000);
 				break;
 			case "setPerfectScoreEnabled":
                 setPerfectScoreEnabled();
@@ -810,37 +828,55 @@
 	CheatModSwitchLove.addTechAndDesignPointsButtons = function(){
 		var div = $("#canvasContainer");
 		var designButton = $('<div id="cheatModDesignPoints" class="selectorButton " style="background-color: orange;position:absolute;line-height: 25px;height:30px;width: 30px; opacity=0;-webkit-border-radius: 999px;-moz-border-radius: 999px;border-radius: 999px;behavior: url(PIE.htc);">' + "+" + "</div>");
-		var techButton = $('<div id="cheatModTechPoints" class="selectorButton " style="background-color: deepskyblue;position:absolute;line-height: 25px;height:30px;width: 30px; opacity=0;-webkit-border-radius: 999px;-moz-border-radius: 999px;border-radius: 999px;behavior: url(PIE.htc);">' + "+" + "</div>");
 		var designButton100 = $('<div id="cheatModDesignPoints100" class="selectorButton " style="background-color: orange;position:absolute;line-height: 35px;height:40px;width: 40px; opacity=0;-webkit-border-radius: 999px;-moz-border-radius: 999px;border-radius: 999px;behavior: url(PIE.htc);">' + "+" + "</div>");
+		var designButton1000 = $('<div id="cheatModDesignPoints1000" class="selectorButton " style="background-color: orange;position:absolute;line-height: 45px;height: 45px;width: 45px; opacity=0;-webkit-border-radius: 999px;-moz-border-radius: 999px;border-radius: 999px;behavior: url(PIE.htc);">' + "+" + "</div>");
+		var techButton = $('<div id="cheatModTechPoints" class="selectorButton " style="background-color: deepskyblue;position:absolute;line-height: 25px;height:30px;width: 30px; opacity=0;-webkit-border-radius: 999px;-moz-border-radius: 999px;border-radius: 999px;behavior: url(PIE.htc);">' + "+" + "</div>");
 		var techButton100 = $('<div id="cheatModTechPoints100" class="selectorButton " style="background-color: deepskyblue;position:absolute;line-height: 35px;height:40px;width: 40px; opacity=0;-webkit-border-radius: 999px;-moz-border-radius: 999px;border-radius: 999px;behavior: url(PIE.htc);">' + "+" + "</div>");
+		var techButton1000 = $('<div id="cheatModTechPoints1000" class="selectorButton " style="background-color: deepskyblue;position:absolute;line-height: 45px;height: 45px;width: 45px; opacity=0;-webkit-border-radius: 999px;-moz-border-radius: 999px;border-radius: 999px;behavior: url(PIE.htc);">' + "+" + "</div>");
 		var research = $('<div id="cheatModAddResearch" class="selectorButton " style="background-color: #006AFF;color:white;position:absolute;line-height: 25px;height:30px;width: 30px; opacity=0;-webkit-border-radius: 999px;-moz-border-radius: 999px;border-radius: 999px;behavior: url(PIE.htc);">' + "+" + "</div>");
+		var research1000 = $('<div id="cheatModAddResearch1000" class="selectorButton " style="background-color: #006AFF;color:white;position:absolute;line-height: 35px;height:40px;width: 40px; opacity=0;-webkit-border-radius: 999px;-moz-border-radius: 999px;border-radius: 999px;behavior: url(PIE.htc);">' + "+" + "</div>");
 		div.append(designButton);
-		div.append(techButton);		
 		div.append(designButton100);
+		div.append(designButton1000);
+		div.append(techButton);		
 		div.append(techButton100);
+		div.append(techButton1000);
 		div.append(research);
-		$("#cheatModDesignPoints").css("left",VisualsManager.gameStatusBar.x + VisualsManager.gameStatusBar.designPoints.x -14);
+		div.append(research1000);
+		$("#cheatModDesignPoints").css("left",VisualsManager.gameStatusBar.x + VisualsManager.gameStatusBar.designPoints.x - 34);
 		$("#cheatModDesignPoints").css("top",VisualsManager.gameStatusBar.y + VisualsManager.gameStatusBar.designPoints.y + 82);
 		$("#cheatModDesignPoints").click (function () {
 				CheatModSwitchLove.addTechAndDesignPoints(true);
 				return false;
 		});
-		$("#cheatModTechPoints").css("left",VisualsManager.gameStatusBar.x + VisualsManager.gameStatusBar.technologyPoints.x -14);
-		$("#cheatModTechPoints").css("top",VisualsManager.gameStatusBar.y + VisualsManager.gameStatusBar.technologyPoints.y + 82);
-		$("#cheatModTechPoints").click (function () {
-				CheatModSwitchLove.addTechAndDesignPoints(false);
-				return false;
-		});		
-		$("#cheatModDesignPoints100").css("left",VisualsManager.gameStatusBar.x + VisualsManager.gameStatusBar.designPoints.x +16);
+		$("#cheatModDesignPoints100").css("left",VisualsManager.gameStatusBar.x + VisualsManager.gameStatusBar.designPoints.x - 4);
 		$("#cheatModDesignPoints100").css("top",VisualsManager.gameStatusBar.y + VisualsManager.gameStatusBar.designPoints.y + 82);
 		$("#cheatModDesignPoints100").click (function () {
 				CheatModSwitchLove.addTechAndDesignPoints(true,true);
 				return false;
 		});
-		$("#cheatModTechPoints100").css("left",VisualsManager.gameStatusBar.x + VisualsManager.gameStatusBar.technologyPoints.x + 16);
+		$("#cheatModDesignPoints1000").css("left",VisualsManager.gameStatusBar.x + VisualsManager.gameStatusBar.designPoints.x + 36);
+		$("#cheatModDesignPoints1000").css("top",VisualsManager.gameStatusBar.y + VisualsManager.gameStatusBar.designPoints.y + 82);
+		$("#cheatModDesignPoints1000").click (function () {
+				CheatModSwitchLove.addTechAndDesignPoints(true,true,true);
+				return false;
+		});
+		$("#cheatModTechPoints").css("left",VisualsManager.gameStatusBar.x + VisualsManager.gameStatusBar.technologyPoints.x - 34);
+		$("#cheatModTechPoints").css("top",VisualsManager.gameStatusBar.y + VisualsManager.gameStatusBar.technologyPoints.y + 82);
+		$("#cheatModTechPoints").click (function () {
+				CheatModSwitchLove.addTechAndDesignPoints(false);
+				return false;
+		});		
+		$("#cheatModTechPoints100").css("left",VisualsManager.gameStatusBar.x + VisualsManager.gameStatusBar.technologyPoints.x - 4);
 		$("#cheatModTechPoints100").css("top",VisualsManager.gameStatusBar.y + VisualsManager.gameStatusBar.technologyPoints.y + 82);
 		$("#cheatModTechPoints100").click (function () {
 				CheatModSwitchLove.addTechAndDesignPoints(false,true);
+				return false;
+		});		
+		$("#cheatModTechPoints1000").css("left",VisualsManager.gameStatusBar.x + VisualsManager.gameStatusBar.technologyPoints.x + 36);
+		$("#cheatModTechPoints1000").css("top",VisualsManager.gameStatusBar.y + VisualsManager.gameStatusBar.technologyPoints.y + 82);
+		$("#cheatModTechPoints1000").click (function () {
+				CheatModSwitchLove.addTechAndDesignPoints(false,false,true);
 				return false;
 		});		
 		$("#cheatModAddResearch").css("left", VisualsManager.researchPoints.x );
@@ -849,25 +885,39 @@
 				addResearchPoints();
 				return false;
 		});
+		$("#cheatModAddResearch1000").css("left", VisualsManager.researchPoints.x - 5);
+		$("#cheatModAddResearch1000").css("top", VisualsManager.researchPoints.y + 103);
+		$("#cheatModAddResearch1000").click (function () {
+				addResearchPoints(true);
+				return false;
+		});
 	}	
 	
-	CheatModSwitchLove.addTechAndDesignPoints = function(design,addBy100){
+	CheatModSwitchLove.addTechAndDesignPoints = function(design,addBy100,addBy1000){
 		if(!GameManager.company.isCurrentlyDevelopingGame())
 			return;
 		
 		var game = GameManager.company.currentGame;
 		
-		if(typeof addBy100 != 'undefined' && addBy100 != null){
+		if(typeof addBy1000 != 'undefined' && addBy1000 != null){
 			if(design){
-			game.designPoints += 100;
+			game.designPoints += 1000;
 			}else{
-				game.technologyPoints += 100;
+				game.technologyPoints += 1000;
 			}
 		}else{
-			if(design){
-			game.designPoints += 10;
+			if(typeof addBy100 != 'undefined' && addBy100 != null){
+				if(design){
+				game.designPoints += 100;
+				}else{
+					game.technologyPoints += 100;
+				}
 			}else{
-				game.technologyPoints += 10;
+				if(design){
+				game.designPoints += 10;
+				}else{
+					game.technologyPoints += 10;
+				}
 			}
 		}
 		VisualsManager.updatePoints();
